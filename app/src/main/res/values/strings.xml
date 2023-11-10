@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Car app</string>
+    <string name="car_name">BMW</string>
+    <string name="car_descr_name">M4 Competition</string>
+    <string name="cars_logo">Your cars</string>
+    <string name="delete_all_btn">Delete all!</string>
+    <string name="delete_btn">Delete!</string>
+    <string name="add_txt">Add a car.</string>
+    <string name="car_name_txt">Car name</string>
+    <string name="nothing_to_delete">You have nothing to delete!</string>
+    <string name="car_description_txt">Car Description</string>
+    <string name="car_picture">URl of a car picture</string>
+    <string name="add_btn">Add</string>
+    <string name="nothing">Nothing:(</string>
+    <string name="confirmation_txt">Do u really want to delete?</string>
+    <string name="confirmation_yes_txt">Yes!</string>
+    <string name="confirmation_no_txt">No!</string>
+    <string name="really_want_to_delete">Do u really want tp delete?</string>
+    <string name="complete_field">Complete all the fields!</string>
+</resources>
