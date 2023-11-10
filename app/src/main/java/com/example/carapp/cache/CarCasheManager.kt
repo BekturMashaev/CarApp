@@ -34,7 +34,8 @@ class CarCacheManager(
     fun deleteAllCars() {
         sharedPreferences.edit().clear().apply()
     }
-    fun deleteNoteByIndex(index: Int) {
+
+    fun deleteCarByIndex(index: Int) {
         val getAllCars = getAllCars().toMutableList()
         if (index in 0 until getAllCars.size) {
             getAllCars.removeAt(index)
