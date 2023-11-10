@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    private val sharedPref by lazy {
+    private val sharedPreferences by lazy {
         CarCacheManager(this)
     }
     private val adapter: CarAdapter by lazy {
         CarAdapter(onDeleteNoteClick = { index ->
-            sharedPref.deleteNoteByIndex(index)
+            sharedPreferences.deleteCarByIndex(index)
             saveCars()
         }, this)
     }
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveCars() {
-        val listOfCars = sharedPref.getAllCars()
+        val listOfCars = sharedPreferences.getAllCars()
         if (listOfCars.isNotEmpty()) {
             binding.carRw.visibility = View.VISIBLE
             binding.nothingTxt.visibility = View.GONE
@@ -46,18 +46,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpClickListener() = binding.apply {
-        val listOfCars = sharedPref.getAllCars()
         addFBtn.setOnClickListener {
             startActivity(Intent(this@MainActivity, AddMainActivity::class.java))
         }
         deleteCard.setOnClickListener {
+            val listOfCars = sharedPreferences.getAllCars()
             if (listOfCars.isEmpty()) showToastManager(getString(R.string.nothing_to_delete))
             else showConfirmDialog()
         }
     }
 
     private fun deleteAllCars() {
-        sharedPref.deleteAllCars()
+        sharedPreferences.deleteAllCars()
         adapter.updateList(emptyList())
         binding.carRw.visibility = View.GONE
         binding.nothingTxt.visibility = View.VISIBLE
