@@ -27,7 +27,12 @@ class CarAdapter(
     inner class CarViewHolder(
         private val binding: CarItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(cars: CarModel) {
+        fun bind(cars: CarModel, type: Int) {
+            when (type) {
+                0 -> binding.colorLinerLayout.setBackgroundResource(R.color.green)
+                1 -> binding.colorLinerLayout.setBackgroundResource(R.color.red)
+                2 -> binding.colorLinerLayout.setBackgroundResource(R.color.yellow)
+            }
             binding.carName.text = cars.carName
             binding.carDescription.text = cars.carDescription
             Glide.with(context).load(cars.carURL).into(binding.ivCarURL)
@@ -51,7 +56,7 @@ class CarAdapter(
     override fun getItemCount(): Int = carList.size
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
-        holder.bind(carList[position])
+        holder.bind(carList[position], position % 3)
         holder.itemView.setOnClickListener {
         }
     }
